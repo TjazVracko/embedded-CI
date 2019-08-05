@@ -2,13 +2,12 @@
 
 ## GitHub repository configuration
 
-1. Enable GitHub webhook:
-2. Go to your GitHub repository and click on ‘Settings’.
-3. Click on Webhooks and then click on ‘Add webhook’.
-4. In the ‘Payload URL’ field, paste your Jenkins environment URL. At the end of this URL add /github-webhook/. In the ‘Content type’ select ‘application/json’ and leave the ‘Secret’ field empty.
-5. in the ‘Which events would you like to trigger this webhook?‘ choose Pushes.
+1. Go to your GitHub repository and click on ‘Settings’.
+2. Click on Webhooks and then click on ‘Add webhook’.
+3. In the ‘Payload URL’ field, paste your Jenkins environment URL. At the end of this URL add /github-webhook/. In the ‘Content type’ select ‘application/json’ and leave the ‘Secret’ field empty.
+4. in the ‘Which events would you like to trigger this webhook?‘ choose Pushes.
 
-6. Commit a file called `Jenkinsfile` to the root of your repository. Here is an example:
+5. Commit a file called `Jenkinsfile` to the root of your repository. Here is an example:
 ```groovy
 pipeline {
     agent any
