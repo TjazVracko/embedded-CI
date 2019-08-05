@@ -1,6 +1,6 @@
 # INSTALLATION INSTRUCTIONS
 
-##Installing Raspbian Lite on your Raspberry Pi
+## Installing Raspbian Lite on your Raspberry Pi
 
 1. download Raspbian LITE here: https://www.raspberrypi.org/downloads/raspbian/
 2. Insert a SD card into your computer.
