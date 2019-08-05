@@ -42,9 +42,9 @@ pipeline {
 ## Creating a Pipeline
 
 1. Click `New Pipeline` in the upper right corner and follow the instructions. 
-2. Jenkins should clone the repository and run the commands as specified in the Jenkinsfile.
+2. When GitHub recieves a new commit (via push), Jenkins should clone the repository and run the commands as specified in the Jenkinsfile. A report of all the commands run is available in the Blue Ocean interface.
 
 ## Embedded devices
 
 * To test external devices just plug them into a USB port on the Raspberry Pi running Jenkins. In the Jenkinsfile, specify witch platformio instructions you want to run (building, testing, enviroments, ...).
-* To send commit status updates to GitHub, check the Jenkinsfile in this repository.
+* To send commit status updates to GitHub, check the Jenkinsfile in this repository. (Statuses can be seen in the commits section on GitHub)
