@@ -65,9 +65,11 @@ sudo apt-get install jenkins -y
 
 4. Run `systemctl status jenkins.service` to check if Jenkins server is running
 
-5. Open your browser and navigate to  http://RASP_IP:8080/ (for example: http://192.168.0.101:8080/) and follow the instructions there.
+5. Open your browser and navigate to  http://RASP_IP:8080/ (for example: http://192.168.0.101:8080/) and follow the instructions there. Choose recomended options.
 When asked to set the Jenkins IP, you should set the outwards facing ip, not the local one (you may need to forward a port or some other configuration in your router)
 This will enable GitHub to to comunicate with Jenkins.
+
+6. Navigate to Manage Jenkins -> Manage Plugins and install the following: `Blue Ocean`, `GitHub Authentication`.
 
 ## Installing PlatformIO Core
 
