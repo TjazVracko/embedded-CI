@@ -1,47 +1,14 @@
-# Part 2 - Setting up a Jenkins Pipeline
+# Part 2 - Setting up a Jenkins Pipeline with GitHub hook
 
 ## GitHub repository configuration
 
 1. Enable GitHub webhook:
-  * Go to your GitHub repository and click on ‘Settings’.
-  * Click on Webhooks and then click on ‘Add webhook’.
-  * In the ‘Payload URL’ field, paste your Jenkins environment URL. At the end of this URL add /github-webhook/. In the ‘Content type’ select ‘application/json’ and leave the ‘Secret’ field empty.
-  * in the ‘Which events would you like to trigger this webhook?‘ choose Pushes.
-2. 
+2. Go to your GitHub repository and click on ‘Settings’.
+3. Click on Webhooks and then click on ‘Add webhook’.
+4. In the ‘Payload URL’ field, paste your Jenkins environment URL. At the end of this URL add /github-webhook/. In the ‘Content type’ select ‘application/json’ and leave the ‘Secret’ field empty.
+5. in the ‘Which events would you like to trigger this webhook?‘ choose Pushes.
 
-# Jenkins del
-idi na jenkins: `http://192.168.0.101:8080/` (ali nekaj podobnega)
-
-v new item zbereš pipeline in potem obkukaš GitHub project in tam daš url not (pomagaj si z ? ikonami)
-obkjukaš GitHub hook trigger for GITScm polling
-
-spodaj zberi hello world example pipeline
-
-
-# TODO: konfiguracijo tako, da bo dalal github hook in da bo delal Jenkinsfile iz repota
-kako dodamo GitHub webhook
-https://dzone.com/articles/adding-a-github-webhook-in-your-jenkins-pipeline
-not realy like this - spremenilo se je
-
-# inštaliraj plugin 'GitHub Authentication'
-
-# sledi to in naredi auth token
-https://medium.com/@dillson/triggering-a-jenkins-pipeline-on-git-push-321d29a98cf3
-
-TOKEN: daf8ae16-11c9-4ee9-9215-07ea66840da2
-       9efce0bf-d302-4d3e-a221-d2d065d439f2
-
-
-# Set up github project & add webhook
-settings -> webhooks -> add webhook
-Payload URL: http://<JENKINS_URL_PORT>/github-webhook/
-Content type: application/json
-Secret: /
-Which events would you like to trigger this webhook? Just the push event.
-CHECK Active
-
-# v github projekt dodaj datoteko imena Jenkinsfile v root
-
+6. Commit a file called `Jenkinsfile` to the root of your repository. Here is an example:
 ```groovy
 pipeline {
     agent any
@@ -65,48 +32,20 @@ pipeline {
     }
 }
 ```
-# back to Jenkis
+(Check the repo for other Jenkinfiles related to using platformIO and using the GitHub commit status API)
 
-## inštaliraj plugin 'GitHub Authentication'
-Manage Jenkins -> Manage Plugins -> Available
-poišči __GitHub Authentication__ in inštaliraj
+## Jenkins configuration
 
-pa green balls si inštaliraj :D (green balls are better than blue)
+1. Follow [this](https://medium.com/@dillson/triggering-a-jenkins-pipeline-on-git-push-321d29a98cf3) nice tutorial on how to add your Github credentials to Jenkins.
 
-## settings
-Manage Jenkins -> Configure System (to traja 4 ever da se naloži)
+2. Navigate to http://JENKINS_URL/blue to acces the Blue Ocean interface (easier to use than classic, also prettier)
 
-**GitHub Servers** sekcija
+## Creating a Pipeline
 
-tu piše kak generiraš credentials in nastaviš
-https://medium.com/@dillson/triggering-a-jenkins-pipeline-on-git-push-321d29a98cf3
+1. Click `New Pipeline` in the upper right corner and follow the instructions. 
+2. Jenkins should clone the repository and run the commands as specified in the Jenkinsfile.
 
-OBKLJUKAJ MANAGE HOOKS!
+## Embedded devices
 
-
-## naredi pipeline
-Jenkins -> New Item
-Zberi pipeline in ga poimenuj
-označi github project in prilepi url ala https://github.com/<username>/testProject
-(V repotu mora bit jenkinsfile)
-
-pod **Build Triggers** označi __GitHub hook trigger for GITScm polling__
-
-pod **pipeline** zberi __Pipeline script from SCM__
-daj Git
-isti repo kot zgoraj (razn če bi rad mel Jenkinsfile v drugem repotu)
-Credentials -none-
-Izberi ketere branche hočeš
-
-nastavi Script Path - če pustiš default mora bit Jenkinsfile v rootu repota
-
-SAVE
-
-potem moraš 1x buildat ročno **Build Now**
-
-testiraj tako, da lokalno narediš spremembo in jo pušaš na github.
-mogo bi se triggerat build - če greš na build -> Console Output vidiš tam 
-
-
-
-
+* To test external devices just plug them into a USB port on the Raspberry Pi running Jenkins. In the Jenkinsfile, specify witch platformio instructions you want to run (building, testing, enviroments, ...).
+* To send commit status updates to GitHub, check the Jenkinsfile in this repository.
