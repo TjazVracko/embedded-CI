@@ -95,3 +95,7 @@ sudo apt-get install gcc-arm-none-eabi binutils-arm-none-eabi libnewlib-arm-none
 sudo apt-get install openocd
 sudo apt-get install libftdi1
 ```
+
+## Pipeline
+
+for a list of instructions on how to set up your pipeline see [HERE](Jenkins_pipeline_instructions.md)
