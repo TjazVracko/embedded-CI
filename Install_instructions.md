@@ -78,10 +78,11 @@ This will enable GitHub to to comunicate with Jenkins.
 
 3. Install 99-platformio-udev.rules by running `curl -fsSL https://raw.githubusercontent.com/platformio/platformio-core/master/scripts/99-platformio-udev.rules | sudo tee /etc/udev/rules.d/99-platformio-udev.rules`
 
-4. Run the following commands to add Jenkins to the Dialout group (granting acces to usb ports)
+4. Run the following commands to add Jenkins to the Dialout group (granting acces to usb ports) and to i2c, to grant access to i2c ports
 ```
 sudo usermod -a -G plugdev jenkins
 sudo usermod -a -G dialout jenkins
+sudo usermod -a -G i2c jenkins
 ```
 5. Restart Jenkins with `sudo service jenkins restart` to apply permissions
 
