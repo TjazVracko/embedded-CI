@@ -97,6 +97,11 @@ sudo apt-get install openocd
 sudo apt-get install libftdi1
 ```
 
+3. You might need to add Jenkins to the sudoers group, depending on what kind of tests you will be running. Di this with
+```
+usermod -a -G sudo jenkins
+```
+
 ## Pipeline
 
 for a list of instructions on how to set up your pipeline see [HERE](Jenkins_pipeline_instructions.md)
