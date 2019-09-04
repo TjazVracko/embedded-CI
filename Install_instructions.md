@@ -101,6 +101,8 @@ sudo apt-get install libftdi1
 ```
 usermod -a -G sudo jenkins
 ```
+Then follow this to enable sudo with no password: https://embeddedartistry.com/blog/2017/11/16/jenkins-running-steps-as-sudo
+(in the Jenkinsfile, put sudo in front of commands that need sudo)
 
 ## Pipeline
 
